@@ -5,9 +5,9 @@ const { service } = Ember.inject;
 
 export default Ember.Route.extend(AuthenticatedRouteMixin, {
   session: service('session'),
-  model: function() {
-    return bands;
-  },
+  // model: function() {
+  //   return ideas;
+  // },
   actions: {
     logout() {
       this.get('session').invalidate();
