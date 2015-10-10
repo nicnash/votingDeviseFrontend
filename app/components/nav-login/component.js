@@ -4,21 +4,15 @@ const { service } = Ember.inject;
 
 export default Ember.Component.extend({
   session: service('session'),
+  identification:'user@example.com',
+  password:'password',
 
   actions: {
     authenticate: function() {
-      var data = this.getProperties('email', 'password');
-      return this.get('session').authenticate('authenticator:devise', data).catch((reason) => {
+      let { identification, password } = this.getProperties('identification', 'password');
+      return this.get('session').authenticate('authenticator:devise', identification, password).catch((reason) => {
         this.set('errorMessage', reason.error);
       });
     }
-    // authenticate: function() {
-    //   var data = this.getProperties('email', 'password');
-    //   console.log(data);
-      
-    //   return this.get('session').authenticate('authenticator:devise', data).catch((reason) => {
-    //     this.set('errorMessage', reason.error);
-    //   });
-    // }
   }
 });

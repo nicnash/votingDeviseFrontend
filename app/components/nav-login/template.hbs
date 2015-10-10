@@ -1,8 +1,9 @@
-{{input type="text" value=email placeholder="Enter Email"}}
+{{input type="text" value=identification placeholder="Enter Email"}}
 
 {{input type="password" value=password placeholder="Enter Password"}} 
 
 <button {{action 'authenticate' email password}}>Login</button>
 {{#if errorMessage}}
+<br>
   {{errorMessage}}
 {{/if}}
