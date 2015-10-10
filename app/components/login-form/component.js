@@ -1,7 +1,3 @@
-// import Ember from 'ember';
-
-// export default Ember.Component.extend({
-// });
 import Ember from 'ember';
 
 const { service } = Ember.inject;
