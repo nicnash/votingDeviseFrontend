@@ -5,9 +5,12 @@ const { service } = Ember.inject;
 
 export default Ember.Route.extend(AuthenticatedRouteMixin, {
   session: service('session'),
-  // model: function() {
-  //   return ideas;
-  // },
+  model:function() {
+      var ideas = this.store.findAll('idea');
+      console.log('ideas',ideas);
+
+      return this.store.findAll('idea');
+  },
   actions: {
     logout() {
       this.get('session').invalidate();

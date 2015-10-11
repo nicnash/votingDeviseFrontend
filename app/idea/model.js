@@ -4,7 +4,7 @@ export default DS.Model.extend({
   title:        DS.attr('string'),
   description:  DS.attr('string'),
   count:        DS.attr('number'),
-  user:         DS.belognsTo('user'),
+  user:         DS.belongsTo('user'),
   vote:         DS.hasMany('vote')
 });
 
