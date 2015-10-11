@@ -1,0 +1,2 @@
+how/when/where to store the user
+do i need to get the user model or just a user id
