@@ -7,3 +7,7 @@ how to keep track client side of what i have voted on.
 
 DS.PromiseObject.create   in the dummy session service
 what is this session service about.
+format.json { render :show, status: :created, location: @user }
+what is show
+why is vote not formatted correctly, but user seems to be.  vote: { }
+how to curl w/ my auth to test my api responses?
