@@ -15,7 +15,7 @@ export default Ember.Controller.extend({
 
 
 			var store = this.store;
-			var aUser = self.store.peekRecord('user',1);
+			var aUser = self.store.find('user',1);
 
 			var newVote = store.createRecord('vote', {
 			  user: aUser,
