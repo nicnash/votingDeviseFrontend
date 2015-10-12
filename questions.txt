@@ -1,2 +1,6 @@
-how/when/where to store the user
-do i need to get the user model or just a user id
+how/when/where to store the user - how on backend, do i need a user controller?
+do i need to get the user model or just a user id -- pretty sure user model
+what is this warning on vote (why is it not formatted correctly) - shouldnt the serializer or adapter fix this?
+how do i increment count since it is a computed thing.  
+
+how to keep track client side of what i have voted on.
