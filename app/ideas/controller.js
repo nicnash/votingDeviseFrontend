@@ -3,6 +3,14 @@ const { service } = Ember.inject;
 
 export default Ember.Controller.extend({
   	sessionUser: service('session-user'),
+  	sortedIdeas:function(){
+  		var self = this;
+  		var ideas = self.get('model');
+
+  		return ideas.sortBy('count').reverse();
+
+
+  	}.property('model.@each.count'),
 	actions:{
 		vote:function(ideaId){
 			console.log('---------vote',ideaId);
