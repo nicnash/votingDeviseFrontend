@@ -7,7 +7,7 @@ design / style
 limit to one vote per idea on client side
 allow me to delete ideas
 be able to edit your ideas
-
+I cooould use d3 to animate how the items move or maybe css?
 how to limit them from submitting an million ideas?
 
 

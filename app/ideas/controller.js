@@ -24,7 +24,12 @@ export default Ember.Controller.extend({
 
 
 
-				  var aUser = self.store.peekRecord('user',1);
+				 
+
+				  
+				});
+
+			 var aUser = self.store.peekRecord('user',1);
 
 				  var newVote = self.store.createRecord('vote', {
 				    user: aUser,
@@ -32,9 +37,6 @@ export default Ember.Controller.extend({
 				  });
 				  console.log('newVote',newVote);
 				  newVote.save();
-
-				  
-				});
 
 			
 		},

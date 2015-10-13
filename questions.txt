@@ -1,17 +1,22 @@
 dictionary
 service 		- long-lived Ember object that can be made available in different parts of your application.
+    can inject into everything in application
 Adapter 		- determines how data is persisted to a backend data store, such as the URL format and headers for a REST API.
-serializers 	- format the data sent to and recieved from the backend store.
+    store root url, port number, headers
+serializers 	- format the data sent to and recieved from the backend store. to and from backend, it converts  deserializing
 
 
 
 how/when/where to store the user - how on backend, do i need a user controller?
+    create a service, can inject it where needed or inject it into application
 do i need to get the user model or just a user id -- pretty sure user model
+    yes?  i need to query for a user cant use thdevise auth stuff
 what is this warning on vote (why is it not formatted correctly) - shouldnt the serializer or adapter fix this?
+    rails was not formatting it correctily.  modifying the controller seemed to fix this.  this is an issue in many places (template doesnt quite work)
 how do i increment count since it is a computed thing.  
-
+    just do it, dont let your dreams be dreams.  on save of vote i guess
 how to keep track client side of what i have voted on.  
-
+    need to get a list of ideaId that i have voted on... i guess all of them
 DS.PromiseObject.create   in the dummy session service
 what is this session service about.
 format.json { render :show, status: :created, location: @user }
@@ -20,3 +25,5 @@ why is vote not formatted correctly, but user seems to be.  vote: { }
 how to curl w/ my auth to test my api responses?
 how to force uniqueness (need to know all votes of mine on client side.?
 how to store the id for new idea (after its saved)  --- wtf it did it automagically?  
+When do you need to just do an ajax call - can rest (rails) really work for more complex things?  maybe something with 100's of records
+how to architect backend and fruntend for count (which doesnt exist, or should it)
