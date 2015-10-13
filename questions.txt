@@ -18,8 +18,5 @@ format.json { render :show, status: :created, location: @user }
 what is show
 why is vote not formatted correctly, but user seems to be.  vote: { }
 how to curl w/ my auth to test my api responses?
-
-
-
-
-
+how to force uniqueness (need to know all votes of mine on client side.?
+how to store the id for new idea (after its saved)  --- wtf it did it automagically?  

@@ -29,6 +29,21 @@ export default Ember.Controller.extend({
 				});
 
 			
+		},
+		createIdea:function(){
+			var self = this;
+
+			console.log('-----createIdea');
+			var idea = self.get('ideaInput');
+			var aUser = self.store.peekRecord('user',1);
+			var newIdea = self.store.createRecord('idea', {
+			  title: idea,
+			  description: idea+' 123 ' + idea,
+			  count:0,
+			  user:aUser
+			});
+			newIdea.save();
+
 		}
 	}
 });

@@ -4,3 +4,6 @@ Ideas! think of em!<br><br>
     <li>{{idea.count}} <span {{action 'vote' idea.id}} >^</span>    {{idea.title}} - {{idea.description}}</li>
 {{/each}}
 </ul>
+
+{{input value=ideaInput}}
+<button {{action 'createIdea'}}>Create idea!</button>
