@@ -8,6 +8,9 @@ export default Ember.Controller.extend({
 			console.log('---------vote',ideaId);
 			var self = this;
 			var idea = this.store.peekRecord('idea', ideaId);
+			// var count = self.get(idea.count);
+			console.log('ideaCount',idea.count);
+			idea.set('count', 55);
 			console.log('idea',idea);
 
 			// var sessionUser = self.get('sessionUser');
@@ -15,7 +18,7 @@ export default Ember.Controller.extend({
 
 
 			var store = this.store;
-			var aUser = self.store.find('user',1);
+			var aUser = self.store.peekRecord('user',1);
 
 			var newVote = store.createRecord('vote', {
 			  user: aUser,

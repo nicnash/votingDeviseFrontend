@@ -10,6 +10,8 @@ Router.map(function() {
   this.route('dashboard', {});
   this.route('ideas', {});
   this.route('user', {});
+  this.route('votes', {});
+  this.route('users', {});
 });
 
 export default Router;
