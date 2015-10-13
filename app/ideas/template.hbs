@@ -1,7 +1,7 @@
 Ideas! think of em!<br><br>
 <ul>
 {{#each model as |idea|}}
-    <li>{{idea.count}} <span {{action 'vote' idea.id}} >^</span>    {{idea.title}} - {{idea.description}}</li>
+    <li>{{idea-item idea=idea vote='vote'}}</li>
 {{/each}}
 </ul>
 
