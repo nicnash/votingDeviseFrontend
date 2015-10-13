@@ -42,11 +42,13 @@ export default Ember.Controller.extend({
 			var self = this;
 
 			console.log('-----createIdea');
-			var idea = self.get('ideaInput');
+			var ideaTitle = self.get('ideaTitle');
+			var ideaDescription = self.get('ideaDescription');
+
 			var aUser = self.store.peekRecord('user',1);
 			var newIdea = self.store.createRecord('idea', {
-			  title: idea,
-			  description: idea+' 123 ' + idea,
+			  title: ideaTitle,
+			  description: ideaDescription,
 			  count:0,
 			  user:aUser
 			});

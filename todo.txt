@@ -6,6 +6,7 @@ create account
 design / style
 limit to one vote per idea on client side
 allow me to delete ideas
+be able to edit your ideas
 
 how to limit them from submitting an million ideas?
 
