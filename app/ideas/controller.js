@@ -13,6 +13,13 @@ export default Ember.Controller.extend({
 
 
   	}.property('model.@each.count'),
+  	voterinos:function(){
+  		console.log('voterinos');
+  		var self = this;
+			var currUser = self.store.peekRecord('user',1);
+			return currUser.votes;
+
+  	}.property('model'),
 	actions:{
 		vote:function(ideaId){
 			console.log('---------vote',ideaId);
@@ -55,7 +62,8 @@ export default Ember.Controller.extend({
 		listVotes:function(){
 			var self = this;
 			var currUser = self.store.peekRecord('user',1);
-			console.log(currUser.votes);
+			var votes = currUser.get('votes');
+			console.log(votes);
 		}
 	}
 });

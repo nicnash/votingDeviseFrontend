@@ -9,3 +9,9 @@ Ideas! think of em!<br><br>
 <button {{action 'createIdea'}}>Create idea!</button>
 <button {{action 'listVotes'}}>listVotes!</button>
 
+
+voterinos!
+{{#each voterinos as |vote|}}
+    <li>{{vote.id}}</li>
+{{/each}}
+end
