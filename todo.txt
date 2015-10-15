@@ -1,6 +1,11 @@
 todo
 
+get list of all votes user has when they log in
+store so that the vote/user association is correct (be able to check votes)
+load all the votes immediately and in 1 call - maybe did!
+can i store the user id in the votes?  same with idea id...
 get list of ideas that i have voted on to display the status of each.
+
 create account
 design / style
 limit to one vote per idea on client side

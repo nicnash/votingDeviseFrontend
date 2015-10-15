@@ -19,7 +19,7 @@ export default Ember.Controller.extend({
 			var currUser = self.store.peekRecord('user',1);
 			return currUser.votes;
 
-  	}.property('model'),
+  	}.property('toggleVotes'),
 	actions:{
 		vote:function(ideaId){
 			console.log('---------vote',ideaId);
@@ -61,9 +61,11 @@ export default Ember.Controller.extend({
 		},
 		listVotes:function(){
 			var self = this;
+
 			var currUser = self.store.peekRecord('user',1);
 			var votes = currUser.get('votes');
 			console.log(votes);
+			self.toggleProperty('toggleVotes');
 		}
 	}
 });
