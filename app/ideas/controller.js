@@ -2,7 +2,9 @@ import Ember from 'ember';
 const { service } = Ember.inject;
 
 export default Ember.Controller.extend({
-  	sessionUser: service('session-user'),
+  	session: service('session'),
+	sessionUser: service('session-user'),
+
   	sortedIdeas:function(){
   		var self = this;
   		var ideas = self.get('model');
@@ -15,30 +17,23 @@ export default Ember.Controller.extend({
 		vote:function(ideaId){
 			console.log('---------vote',ideaId);
 			var self = this;
-			var idea = this.store.findRecord('idea', ideaId).then(function(idea) {
-				  var count = idea.get('count'); // => "Rails is Omakase"
-				   idea.set('count', count+1);
-				  // idea.save(); // => PUT to '/idea/1'
+
+			var idea = self.store.peekRecord('idea', ideaId);
+			var ideaCount = idea.get('count');
+			idea.set('count',ideaCount+1);
 
 
+			var currUser = self.store.peekRecord('user',1);
 
+			var newVote = self.store.createRecord('vote', {
+				user: currUser,
+				idea: idea,
+			});
+			console.log('savingVote curruser, idea');
+			console.log(currUser);
+			console.log(idea);
 
-
-				 
-
-				  
-				});
-
-			 var aUser = self.store.peekRecord('user',1);
-
-				  var newVote = self.store.createRecord('vote', {
-				    user: aUser,
-				    idea: idea,
-				  });
-				  console.log('newVote',newVote);
-				  newVote.save();
-
-			
+			newVote.save();
 		},
 		createIdea:function(){
 			var self = this;

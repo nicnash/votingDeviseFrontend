@@ -1,7 +1,6 @@
 todo
 
 get list of ideas that i have voted on to display the status of each.
-get the user on login
 create account
 design / style
 limit to one vote per idea on client side
@@ -11,6 +10,10 @@ I cooould use d3 to animate how the items move or maybe css?
 how to limit them from submitting an million ideas?
 
 
-possibilities
+-----possibilities
 implement tags
 add pictures
+
+
+-----done
+get the user on login
