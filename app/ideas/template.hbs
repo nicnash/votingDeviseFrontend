@@ -10,8 +10,10 @@ Ideas! think of em!<br><br>
 <button {{action 'listVotes'}}>listVotes!</button>
 
 
-voterinos!
-{{#each voterinos as |vote|}}
-    {{vote.Id}}<br>
+voterinos!{{voterinos.votes}}
+{{voterinos.first}}
+{{voterinos.last}}
+{{#each voterinos.votes as |vote|}}
+    {{vote.id}}<br>
 {{/each}}
 end

@@ -17,6 +17,11 @@ export default Ember.Controller.extend({
   		console.log('voterinos');
   		var self = this;
 			var currUser = self.store.peekRecord('user',1);
+			return currUser;
+			console.log(currUser.votes);
+			var voteee = currUser.get('votes');
+
+			console.log(voteee.length);
 			return currUser.votes;
 
   	}.property('toggleVotes'),
