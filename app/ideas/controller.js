@@ -51,6 +51,11 @@ export default Ember.Controller.extend({
 			});
 			newIdea.save();
 
+		},
+		listVotes:function(){
+			var self = this;
+			var currUser = self.store.peekRecord('user',1);
+			console.log(currUser.votes);
 		}
 	}
 });
