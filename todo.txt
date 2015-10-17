@@ -1,21 +1,14 @@
 todo
 
-inject current user into every controller
-get list of all votes user has when they log in
-get correct user on login - stop it from returning both users?
-store so that the vote/user association is correct (be able to check votes)
-load all the votes immediately and in 1 call - maybe did!
-can i store the user id in the votes?  same with idea id...
 get list of ideas that i have voted on to display the status of each.
+create a computed array of all the ideas a user has voted on
 
 create account
 design / style
-limit to one vote per idea on client side
 allow me to delete ideas
 be able to edit your ideas
 I cooould use d3 to animate how the items move or maybe css?
-how to limit them from submitting an million ideas?
-
+limite to one vote per idea on backend
 
 -----possibilities
 implement tags
@@ -24,3 +17,10 @@ add pictures
 
 -----done
 get the user on login
+inject current user into every controller
+get list of all votes user has when they log in
+store so that the vote/user association is correct (be able to check votes)
+load all the votes immediately and in 1 call - maybe did!
+can i store the user id in the votes?  same with idea id...
+get correct user on login - stop it from returning both users?
+limit to one vote per idea on client side

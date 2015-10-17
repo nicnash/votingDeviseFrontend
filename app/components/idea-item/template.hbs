@@ -1,1 +1,2 @@
-<<span class="count">{{idea.count}}</span>   <span class="border" {{action 'vote' idea.id}}>   {{idea.title}} - {{idea.description}}</span>
+{{#if isVotedOn}}YEP~!{{/if}}
+<span class="count">{{idea.count}}{{isVotedOn}}</span>   <span class="border" {{action 'vote' idea.id}}>   {{idea.title}} - {{idea.description}}</span>

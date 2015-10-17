@@ -1,21 +1,11 @@
 Ideas! think of em!<br><br>
+
+{{input value=ideaTitle placeholder='title'}} {{input value=ideaDescription placeholder='description'}}
+<button {{action 'createIdea'}}>Create idea!</button>
+
 <ul class="border">
 {{#each sortedIdeas as |idea|}}
     <li>{{idea-item idea=idea vote='vote'}}</li>
 {{/each}}
 </ul>
 
-{{input value=ideaTitle placeholder='title'}} {{input value=ideaDescription placeholder='description'}}
-<button {{action 'createIdea'}}>Create idea!</button>
-<button {{action 'listVotes'}}>listVotes!</button>
-
-
-voterinos!{{voterinos.votes}}
-{{voterinos.first}}
-{{voterinos.last}}
-
-
-{{#each voterinos as |vote|}}
-    {{vote.id}}<br>
-{{/each}}
-end

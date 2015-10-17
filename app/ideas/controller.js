@@ -4,111 +4,89 @@ const { service } = Ember.inject;
 export default Ember.Controller.extend({
   	session: service('session'),
 	sessionUser: service('session-user'),
-
+	currentUser: Ember.computed.alias('sessionUser.currentUser'),
   	sortedIdeas:function(){
   		var self = this;
   		var ideas = self.get('model');
+  		var currentUserVotes = self.get('currentUser.votes');
+  		var what = self.get('currentUser.votes.idea');
+console.log(what);
+console.log(Ember.inspect(what));
+
+
+  		ideas.forEach(function(idea1) {
+			   	var ideaId1 = idea1.get('id');
+			   	console.log(ideaId1);
+	   	  		currentUserVotes.forEach(function(vote) {
+   				    let ideaId2 = vote.get('idea.id');
+		   			console.log("---",ideaId2);
+   				   	
+   				   	if(ideaId1 === ideaId2){
+   				   		console.log('yep!');
+   				   		// Ember.set(idea1,'isVotedOn',true);
+   				   		// idea1.save();
+   				    	// idea1.set('isVotedOn',true);
+
+   				   	}
+   				   	
+
+   				});
+
+			});
 
   		return ideas.sortBy('count').reverse();
 
-
   	}.property('model.@each.count'),
-  	voterinos:function(){
-  		console.log('voterinos');
-  		var self = this;
-			var currUser = self.store.peekRecord('user',1);
-			console.log(currUser.votes);
-			var voteee = currUser.get('votes');
 
-			// console.log(voteee.length);
-			return voteee;
-
-  	}.property('toggleVotes'),
 	actions:{
 		vote:function(ideaId){
 			console.log('---------vote',ideaId);
 			var self = this;
-			var currUser = self.store.peekRecord('user',1);
-			var votes = currUser.get('votes');
+			var currentUser = self.get('currentUser');
+			var votes = currentUser.get('votes');
 			var foundIdea = false;
+
 			votes.forEach(function(vote) {
 			    let idea = vote.get('idea');
 			    let otherIdeaId = idea.get('id');
-			    // console.log('idea',idea.id);
-			    console.log('idea',otherIdeaId);
+
 			    if(otherIdeaId === ideaId){
 			    	console.log('FOUND IT SAME IDEAID');
 			    	foundIdea = idea;
 			    }
-
 			});
 
-			console.log(foundIdea);
 			if(!foundIdea){
 
 				var idea = this.store.peekRecord('idea', ideaId);
-				console.log('idea that user has not voted on yet');
-				// console.log(idea);
-				Ember.Logger.log(idea);
-				// var idea = self.store.peekRecord('idea', ideaId);
 				var ideaCount = idea.get('count');
 				idea.set('count',ideaCount+1);
 
 				var newVote = self.store.createRecord('vote', {
-					user: currUser,
+					user: currentUser,
 					idea: idea,
 				});
-
 
 				newVote.save();
 			}
 
-			// console.log('votes',votes);
-			// debugger;
-			// vote.contains('')
-
-			// var idea = self.store.peekRecord('idea', ideaId);
-			// var ideaCount = idea.get('count');
-			// idea.set('count',ideaCount+1);
-
-
-			// var currUser = self.store.peekRecord('user',1);
-
-			// var newVote = self.store.createRecord('vote', {
-			// 	user: currUser,
-			// 	idea: idea,
-			// });
-
-			// console.log('savingVote curruser, idea');
-			// console.log(currUser);
-			// console.log(idea);
-
-			// newVote.save();
 		},
 		createIdea:function(){
-			var self = this;
-
 			console.log('-----createIdea');
+			var self = this;
+			var currentUser = self.get('currentUser');
+
 			var ideaTitle = self.get('ideaTitle');
 			var ideaDescription = self.get('ideaDescription');
 
-			var aUser = self.store.peekRecord('user',1);
 			var newIdea = self.store.createRecord('idea', {
 			  title: ideaTitle,
 			  description: ideaDescription,
 			  count:0,
-			  user:aUser
+			  user:currentUser
 			});
 			newIdea.save();
 
-		},
-		listVotes:function(){
-			var self = this;
-
-			var currUser = self.store.peekRecord('user',1);
-			var votes = currUser.get('votes');
-			console.log(votes);
-			self.toggleProperty('toggleVotes');
 		}
 	}
 });
