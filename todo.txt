@@ -1,5 +1,6 @@
 todo
 
+inject current user into every controller
 get list of all votes user has when they log in
 get correct user on login - stop it from returning both users?
 store so that the vote/user association is correct (be able to check votes)

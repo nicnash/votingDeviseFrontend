@@ -13,7 +13,9 @@ Ideas! think of em!<br><br>
 voterinos!{{voterinos.votes}}
 {{voterinos.first}}
 {{voterinos.last}}
-{{#each voterinos.votes as |vote|}}
+
+
+{{#each voterinos as |vote|}}
     {{vote.id}}<br>
 {{/each}}
 end

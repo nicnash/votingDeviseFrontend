@@ -17,35 +17,73 @@ export default Ember.Controller.extend({
   		console.log('voterinos');
   		var self = this;
 			var currUser = self.store.peekRecord('user',1);
-			return currUser;
 			console.log(currUser.votes);
 			var voteee = currUser.get('votes');
 
-			console.log(voteee.length);
-			return currUser.votes;
+			// console.log(voteee.length);
+			return voteee;
 
   	}.property('toggleVotes'),
 	actions:{
 		vote:function(ideaId){
 			console.log('---------vote',ideaId);
 			var self = this;
-
-			var idea = self.store.peekRecord('idea', ideaId);
-			var ideaCount = idea.get('count');
-			idea.set('count',ideaCount+1);
-
-
 			var currUser = self.store.peekRecord('user',1);
+			var votes = currUser.get('votes');
+			var foundIdea = false;
+			votes.forEach(function(vote) {
+			    let idea = vote.get('idea');
+			    let otherIdeaId = idea.get('id');
+			    // console.log('idea',idea.id);
+			    console.log('idea',otherIdeaId);
+			    if(otherIdeaId === ideaId){
+			    	console.log('FOUND IT SAME IDEAID');
+			    	foundIdea = idea;
+			    }
 
-			var newVote = self.store.createRecord('vote', {
-				user: currUser,
-				idea: idea,
 			});
-			console.log('savingVote curruser, idea');
-			console.log(currUser);
-			console.log(idea);
 
-			newVote.save();
+			console.log(foundIdea);
+			if(!foundIdea){
+
+				var idea = this.store.peekRecord('idea', ideaId);
+				console.log('idea that user has not voted on yet');
+				// console.log(idea);
+				Ember.Logger.log(idea);
+				// var idea = self.store.peekRecord('idea', ideaId);
+				var ideaCount = idea.get('count');
+				idea.set('count',ideaCount+1);
+
+				var newVote = self.store.createRecord('vote', {
+					user: currUser,
+					idea: idea,
+				});
+
+
+				newVote.save();
+			}
+
+			// console.log('votes',votes);
+			// debugger;
+			// vote.contains('')
+
+			// var idea = self.store.peekRecord('idea', ideaId);
+			// var ideaCount = idea.get('count');
+			// idea.set('count',ideaCount+1);
+
+
+			// var currUser = self.store.peekRecord('user',1);
+
+			// var newVote = self.store.createRecord('vote', {
+			// 	user: currUser,
+			// 	idea: idea,
+			// });
+
+			// console.log('savingVote curruser, idea');
+			// console.log(currUser);
+			// console.log(idea);
+
+			// newVote.save();
 		},
 		createIdea:function(){
 			var self = this;
