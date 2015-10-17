@@ -5,7 +5,8 @@ Ideas! think of em!<br><br>
 
 <ul class="border">
 {{#each sortedIdeas as |idea|}}
-    <li>{{idea-item idea=idea vote='vote'}}</li>
+    <li>{{idea-item idea=idea ideaIdForVotes=ideaIdForVotes vote='vote'}}</li>
 {{/each}}
 </ul>
+{{ideaIdForVotes}}
 

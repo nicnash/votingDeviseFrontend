@@ -7,12 +7,7 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
   session: service('session'),
   model:function() {
     var self = this;
-      var ideas = this.store.findAll('idea');
-      console.log('ideas',ideas);
-      var session = self.get('session');
-      // console.log('session',sessionemail);
-
-      return this.store.findAll('idea');
+    return this.store.findAll('idea');
   },
   actions: {
     logout() {

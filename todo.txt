@@ -3,6 +3,8 @@ todo
 get list of ideas that i have voted on to display the status of each.
 create a computed array of all the ideas a user has voted on
 
+im confused by session / session user... i wish session user was current user and thats it.
+clean up how current user is put on 
 create account
 design / style
 allow me to delete ideas

@@ -5,21 +5,55 @@ export default Ember.Controller.extend({
   	session: service('session'),
 	sessionUser: service('session-user'),
 	currentUser: Ember.computed.alias('sessionUser.currentUser'),
+    ideaIdForVotes: function(){
+        console.log('---------ideaIdForVotes');
+        var self = this;
+        var userVotes = self.get('currentUser.votes');
+        var array=[];
+        userVotes.forEach(function(vote, index, enumerable) {
+            var tempIdea = vote.get('idea.id');
+            array.push(tempIdea);
+        });
+
+        console.log(array);
+        return array;
+
+    }.property('currentUser.votes.[]'),
+    included:function(){
+        var allIdeas = self.get('model');
+        var userVotes = self.get('currentUser.votes');
+
+        userVotes.forEach(function(item, index, enumerable) {
+            Ember.set(item, "id", 11); 
+            Ember.get(item, "id");
+        });
+
+    }.property('currentUser.votes.[]'),
+    // isIdeaVotedOn:function(ideaId){
+    //     var self = this;
+    //     var votedOnIdeas = self.get('ideaIdForVotes');
+    //     if(votedOnIdeas.contains(ideaId)){
+    //         return true;
+    //     }
+    //     return false;
+    // }.property(),
   	sortedIdeas:function(){
+
   		var self = this;
   		var ideas = self.get('model');
   		var currentUserVotes = self.get('currentUser.votes');
   		var what = self.get('currentUser.votes.idea');
-console.log(what);
-console.log(Ember.inspect(what));
+        // console.log(what);
+        // console.log(Ember.inspect(what));
+    
 
 
   		ideas.forEach(function(idea1) {
 			   	var ideaId1 = idea1.get('id');
-			   	console.log(ideaId1);
+			   	// console.log(ideaId1);
 	   	  		currentUserVotes.forEach(function(vote) {
    				    let ideaId2 = vote.get('idea.id');
-		   			console.log("---",ideaId2);
+		   			// console.log("---",ideaId2);
    				   	
    				   	if(ideaId1 === ideaId2){
    				   		console.log('yep!');
