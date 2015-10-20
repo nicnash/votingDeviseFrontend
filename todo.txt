@@ -1,11 +1,9 @@
 todo
 
 get list of ideas that i have voted on to display the status of each.
-create a computed array of all the ideas a user has voted on
+use emberdata to create user.
+im confused by session / session user... i wish session user was current user and thats it. - clean up how current user is put on 
 
-im confused by session / session user... i wish session user was current user and thats it.
-clean up how current user is put on 
-create account
 design / style
 allow me to delete ideas
 be able to edit your ideas
@@ -26,3 +24,6 @@ load all the votes immediately and in 1 call - maybe did!
 can i store the user id in the votes?  same with idea id...
 get correct user on login - stop it from returning both users?
 limit to one vote per idea on client side
+Delete vote.
+create a computed array of all the ideas a user has voted on
+create account

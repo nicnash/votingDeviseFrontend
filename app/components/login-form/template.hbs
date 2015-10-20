@@ -8,6 +8,16 @@
   <button type="submit">Login</button>
 </form>
 
+<h2>Create New</h2>
+{{input value=newEmail placeholder="email"}}<br><br>
+{{input value=newPassword type="password" placeholder="Password"}}<br>
+{{input value=newPasswordConfirm type="password" placeholder="Confirm Password"}}
+
+<button {{action "createUser"}}>
+Create
+</button>
 {{#if errorMessage}}
   {{errorMessage}}
 {{/if}}
+
+

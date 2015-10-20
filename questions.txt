@@ -27,3 +27,4 @@ how to force uniqueness (need to know all votes of mine on client side.?
 how to store the id for new idea (after its saved)  --- wtf it did it automagically?  
 When do you need to just do an ajax call - can rest (rails) really work for more complex things?  maybe something with 100's of records
 how to architect backend and fruntend for count (which doesnt exist, or should it)
+resources :users AND devise_for :users
