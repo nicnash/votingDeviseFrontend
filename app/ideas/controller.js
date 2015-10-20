@@ -19,24 +19,11 @@ export default Ember.Controller.extend({
         return array;
 
     }.property('currentUser.votes.[]'),
-    included:function(){
-        var allIdeas = self.get('model');
-        var userVotes = self.get('currentUser.votes');
-
-        userVotes.forEach(function(item, index, enumerable) {
-            Ember.set(item, "id", 11); 
-            Ember.get(item, "id");
-        });
-
-    }.property('currentUser.votes.[]'),
-    // isIdeaVotedOn:function(ideaId){
-    //     var self = this;
-    //     var votedOnIdeas = self.get('ideaIdForVotes');
-    //     if(votedOnIdeas.contains(ideaId)){
-    //         return true;
-    //     }
-    //     return false;
-    // }.property(),
+    // votedOnIdeas: Ember.computed.map('currentUser.votes', function(vote, index) {
+    //     return vote.get('idea');
+    //   }),
+    votedOnIdeas: Ember.computed.mapBy('currentUser.votes','idea'),
+    ideasInCommon: Ember.computed.intersect('votedOnIdeas', 'model'),
   	sortedIdeas:function(){
 
   		var self = this;
@@ -45,7 +32,14 @@ export default Ember.Controller.extend({
   		var what = self.get('currentUser.votes.idea');
         // console.log(what);
         // console.log(Ember.inspect(what));
-    
+        var votedOnIdeas = self.get('votedOnIdeas');
+        console.log('votedOnIdeas',votedOnIdeas);
+        
+        var model = self.get('model');
+        console.log('model',model);
+
+        var ideasInCommon = self.get('ideasInCommon');
+        console.log('ideasInCommon',ideasInCommon);
 
 
   		ideas.forEach(function(idea1) {
