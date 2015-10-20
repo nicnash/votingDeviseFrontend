@@ -73,6 +73,7 @@ export default Ember.Controller.extend({
 			var currentUser = self.get('currentUser');
 			var votes = currentUser.get('votes');
 			var foundIdea = false;
+			var votedAlready;
 
 			votes.forEach(function(vote) {
 			    let idea = vote.get('idea');
@@ -81,13 +82,14 @@ export default Ember.Controller.extend({
 			    if(otherIdeaId === ideaId){
 			    	console.log('FOUND IT SAME IDEAID');
 			    	foundIdea = idea;
+			    	votedAlready=vote;
 			    }
 			});
 
 			if(!foundIdea){
 
 				var idea = this.store.peekRecord('idea', ideaId);
-				var ideaCount = idea.get('count');
+				let ideaCount = idea.get('count');
 				idea.set('count',ideaCount+1);
 
 				var newVote = self.store.createRecord('vote', {
@@ -96,6 +98,15 @@ export default Ember.Controller.extend({
 				});
 
 				newVote.save();
+			} else {
+				console.log('votedAlready',votedAlready);
+				votedAlready.destroyRecord();
+				let ideaCount = foundIdea.get('count');
+				foundIdea.set('count',ideaCount-1);
+
+				// store.findRecord('post', 2).then(function(post) {
+				//   post.destroyRecord(); // => DELETE to /posts/2
+				// });
 			}
 
 		},
