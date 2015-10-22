@@ -3,7 +3,7 @@ service 		- long-lived Ember object that can be made available in different part
     can inject into everything in application
 Adapter 		- determines how data is persisted to a backend data store, such as the URL format and headers for a REST API.
     store root url, port number, headers
-serializers 	- format the data sent to and recieved from the backend store. to and from backend, it converts  deserializing
+serializers 	- format the data sent to and recieved from the backend store. to and from backend, it converts.  deserializing on way back
 
 
 
@@ -31,3 +31,5 @@ resources :users AND devise_for :users
 do i need to check if i own the idea b4 delete?
 how to create reset email
 what is the proper way to make the x (Delete) red
+how to heroku - postrest
+irc - why cant i see peoples names

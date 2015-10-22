@@ -12,20 +12,20 @@ const { service } = Ember.inject;
 export default Ember.Service.extend({
 	session: service('session'),
 	store: service(),
-	init:function(){
-		console.log('----session-user service init!');
-		var self = this;
-		var userEmail = this.get('session.data.authenticated.email');
-		if (!Ember.isEmpty(userEmail)) {
-			return DS.PromiseObject.create({
+	// init:function(){
+	// 	console.log('----session-user service init!');
+	// 	var self = this;
+	// 	var userEmail = this.get('session.data.authenticated.email');
+	// 	if (!Ember.isEmpty(userEmail)) {
+	// 		return DS.PromiseObject.create({
 
-		        // promise: this.get('store').find('user', 1).then(function(user){
-		        promise: this.get('store').queryRecord('user', { filter: { 'email': userEmail} }).then(function(user){
-		        	self.set('currentUser',user);
-		        })
-		      });
-		}
-	},
+	// 	        // promise: this.get('store').find('user', 1).then(function(user){
+	// 	        promise: this.get('store').queryRecord('user', { filter: { 'email': userEmail} }).then(function(user){
+	// 	        	self.set('currentUser',user);
+	// 	        })
+	// 	      });
+	// 	}
+	// },
 
 	currentUser:function(){
 		console.log('----session-user service currentUser!');
@@ -34,13 +34,7 @@ export default Ember.Service.extend({
 		var userEmail = this.get('session.data.authenticated.email');
 		if (!Ember.isEmpty(userEmail)) {
 
-			return DS.PromiseObject.create({
-
-		        // promise: this.get('store').find('user', 1).then(function(user){
-		        promise: this.get('store').queryRecord('user', { filter: { 'email': userEmail} }).then(function(user){
-		        	self.set('currentUser',user);
-		        })
-		      });
+			return this.get('store').queryRecord('user', { filter: { 'email': userEmail} })
 		}
-	}.observes('session','session.isAuthenticated')
+	}.property('session','session.isAuthenticated')
 });

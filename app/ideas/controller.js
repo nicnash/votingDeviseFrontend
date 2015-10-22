@@ -2,9 +2,8 @@ import Ember from 'ember';
 const { service } = Ember.inject;
 
 export default Ember.Controller.extend({
-  	session: service('session'),
 	sessionUser: service('session-user'),
-	currentUser: Ember.computed.alias('sessionUser.currentUser'),
+	currentUser: Ember.computed.alias('model.currentUser'),
     ideaIdForVotes: function(){
         console.log('---------ideaIdForVotes');
         var self = this;
@@ -23,18 +22,19 @@ export default Ember.Controller.extend({
     //     return vote.get('idea');
     //   }),
     votedOnIdeas: Ember.computed.mapBy('currentUser.votes','idea'),
-    ideasInCommon: Ember.computed.intersect('votedOnIdeas', 'model'),
+    ideasInCommon: Ember.computed.intersect('votedOnIdeas', 'model.ideas'),
   	sortedIdeas:function(){
 
   		var self = this;
-  		var ideas = self.get('model');
+  		var ideas = self.get('model.ideas');
+  		var currentUser = self.get('currentUser.email');
   		var currentUserVotes = self.get('currentUser.votes');
   		var what = self.get('currentUser.votes.idea');
         var votedOnIdeas = self.get('votedOnIdeas');
-        
+        console.log('currentUser',currentUser);
         console.log('votedOnIdeas',votedOnIdeas);
         
-        var model = self.get('model');
+        var model = self.get('model.ideas');
         console.log('model',model);
 
         var ideasInCommon = self.get('ideasInCommon');
@@ -58,7 +58,7 @@ export default Ember.Controller.extend({
 
   		return ideas.sortBy('count').reverse();
 
-  	}.property('model.@each.count'),
+  	}.property('model.ideas.@each.count'),
 
 	actions:{
 		vote:function(ideaId){
