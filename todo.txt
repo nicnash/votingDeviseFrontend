@@ -10,6 +10,7 @@ I cooould use d3 to animate how the items move or maybe css?
 limite to one vote per idea on backend
 limit to 3 ideas backend
 confirm dialog for delete ideas
+twitch/ github login?
 
 -----possibilities
 implement tags

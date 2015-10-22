@@ -30,3 +30,4 @@ how to architect backend and fruntend for count (which doesnt exist, or should i
 resources :users AND devise_for :users
 do i need to check if i own the idea b4 delete?
 how to create reset email
+what is the proper way to make the x (Delete) red

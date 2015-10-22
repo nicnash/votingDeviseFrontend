@@ -16,3 +16,6 @@
 .border:hover{
     background-color: #eee;
 }
+.isVotedOn{
+    color:green;
+}

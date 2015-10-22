@@ -30,9 +30,8 @@ export default Ember.Controller.extend({
   		var ideas = self.get('model');
   		var currentUserVotes = self.get('currentUser.votes');
   		var what = self.get('currentUser.votes.idea');
-        // console.log(what);
-        // console.log(Ember.inspect(what));
         var votedOnIdeas = self.get('votedOnIdeas');
+        
         console.log('votedOnIdeas',votedOnIdeas);
         
         var model = self.get('model');
@@ -44,16 +43,11 @@ export default Ember.Controller.extend({
 
   		ideas.forEach(function(idea1) {
 			   	var ideaId1 = idea1.get('id');
-			   	// console.log(ideaId1);
 	   	  		currentUserVotes.forEach(function(vote) {
    				    let ideaId2 = vote.get('idea.id');
-		   			// console.log("---",ideaId2);
    				   	
    				   	if(ideaId1 === ideaId2){
    				   		console.log('yep!');
-   				   		// Ember.set(idea1,'isVotedOn',true);
-   				   		// idea1.save();
-   				    	// idea1.set('isVotedOn',true);
 
    				   	}
    				   	
@@ -103,10 +97,6 @@ export default Ember.Controller.extend({
 				votedAlready.destroyRecord();
 				let ideaCount = foundIdea.get('count');
 				foundIdea.set('count',ideaCount-1);
-
-				// store.findRecord('post', 2).then(function(post) {
-				//   post.destroyRecord(); // => DELETE to /posts/2
-				// });
 			}
 
 		},
