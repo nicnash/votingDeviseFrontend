@@ -114,17 +114,27 @@ export default Ember.Controller.extend({
 			console.log('-----createIdea');
 			var self = this;
 			var currentUser = self.get('currentUser');
+			var ideasCount = currentUser.get('ideasCount');
+			console.log('total ideas:', ideasCount);
 
-			var ideaTitle = self.get('ideaTitle');
-			var ideaDescription = self.get('ideaDescription');
+			if(ideasCount <=2){
+				var ideaTitle = self.get('ideaTitle');
+				var ideaDescription = self.get('ideaDescription');
 
-			var newIdea = self.store.createRecord('idea', {
-			  title: ideaTitle,
-			  description: ideaDescription,
-			  count:0,
-			  user:currentUser
-			});
-			newIdea.save();
+				var newIdea = self.store.createRecord('idea', {
+				  title: ideaTitle,
+				  description: ideaDescription,
+				  count:0,
+				  user:currentUser
+				});
+				self.set('ideaTitle','');
+				self.set('ideaDescription','');
+
+
+				newIdea.save();
+			} else {
+				console.log('ERRRR BAD.');
+			}
 
 		}
 	}

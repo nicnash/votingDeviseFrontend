@@ -28,3 +28,5 @@ how to store the id for new idea (after its saved)  --- wtf it did it automagica
 When do you need to just do an ajax call - can rest (rails) really work for more complex things?  maybe something with 100's of records
 how to architect backend and fruntend for count (which doesnt exist, or should it)
 resources :users AND devise_for :users
+do i need to check if i own the idea b4 delete?
+how to create reset email

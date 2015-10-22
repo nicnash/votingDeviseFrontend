@@ -1,2 +1,2 @@
-{{#if isVotedOn}}YEP~!{{/if}}
+{{#if isVotedOn}}YEP~!{{/if}}{{#if isUsersIdea}}<span {{action 'deleteIdea' idea}}>x</span>{{/if}}
 <span class="count">{{idea.count}}</span>   <span class="border" {{action 'vote' idea.id}}>   {{idea.title}} - {{idea.description}}</span>

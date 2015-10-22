@@ -1,19 +1,19 @@
 todo
 
 get list of ideas that i have voted on to display the status of each.
-use emberdata to create user.
-im confused by session / session user... i wish session user was current user and thats it. - clean up how current user is put on 
+
+*im confused by session / session user... i wish session user was current user and thats it. - clean up how current user is put on 
 
 design / style
-allow me to delete ideas
 be able to edit your ideas
 I cooould use d3 to animate how the items move or maybe css?
 limite to one vote per idea on backend
+limit to 3 ideas backend
+confirm dialog for delete ideas
 
 -----possibilities
 implement tags
 add pictures
-
 
 -----done
 get the user on login
@@ -27,3 +27,7 @@ limit to one vote per idea on client side
 Delete vote.
 create a computed array of all the ideas a user has voted on
 create account
+use emberdata to create user.
+create user confirmation (somehow)
+allow me to delete ideas
+limit to 3 ideas frontend
