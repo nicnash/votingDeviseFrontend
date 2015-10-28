@@ -22,6 +22,8 @@ module.exports = function(environment) {
     }
   };
 
+  // ENV.API_HOST = "https://api-staging.herokuapp.com"
+
   ENV['ember-simple-auth'] = {
     store: 'session-store:local-storage',
     routeAfterAuthentication: 'dashboard',
