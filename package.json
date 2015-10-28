@@ -11,7 +11,7 @@
     "build": "ember build",
     "start": "ember server",
     "test": "ember test",
-    "postinstall": "bower install"
+    "postinstall": "bower cache clean && bower install"
   },
   "repository": "",
   "engines": {
