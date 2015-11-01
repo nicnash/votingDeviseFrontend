@@ -1,5 +1,4 @@
-Ideas! think of em!<br><br>
-
+<br>
 {{input value=ideaTitle placeholder='title'}} {{input value=ideaDescription placeholder='description'}}
 <button {{action 'createIdea'}}>Create idea!</button>
 
@@ -8,8 +7,3 @@ Ideas! think of em!<br><br>
     <li>{{idea-item idea=idea ideaIdForVotes=ideaIdForVotes vote='vote'}}</li>
 {{/each}}
 </ul>
-
-ideaIdForVotes{{ideaIdForVotes}}<br>
-{{!-- votedOnIdeas:{{votedOnIdeas}}<br>
-ideasInCommon:{{ideasInCommon}}
- --}}
