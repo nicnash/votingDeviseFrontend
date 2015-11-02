@@ -1,9 +1,8 @@
 todo
 
-get list of ideas that i have voted on to display the status of each.
-
-*im confused by session / session user... i wish session user was current user and thats it. - clean up how current user is put on 
-
+add a name to user
+allow user to change password!
+http://tmi.twitch.tv/group/user/twitch/chatters
 design / style
 be able to edit your ideas
 I cooould use d3 to animate how the items move or maybe css?
