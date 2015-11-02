@@ -23,7 +23,8 @@ module.exports = function(environment) {
     },
 
     api: {
-      host: 'http://localhost:3000',
+      // host: 'http://localhost:3000',
+      host: 'http://52.27.7.190:3000'
     }
   };
 
@@ -54,6 +55,10 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
+    // api.host:'http://52.27.7.190:3000'
+    api: {
+      host: 'http://localhost:3000'
+    }
 
   }
 
