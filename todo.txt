@@ -1,16 +1,18 @@
 todo
 
-get list of ideas that i have voted on to display the status of each.
 
-*im confused by session / session user... i wish session user was current user and thats it. - clean up how current user is put on 
-
-design / style
 be able to edit your ideas
-I cooould use d3 to animate how the items move or maybe css?
+password change
+update token on password change
+design / style
 limite to one vote per idea on backend
 limit to 3 ideas backend
 confirm dialog for delete ideas
 twitch/ github login?
+auto refresh
+add a twitch username, name, bio, age, location, languages, experience blah, photo
+better explanation
+delete fartbags ideas.
 
 -----possibilities
 implement tags

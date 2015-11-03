@@ -1,1 +1,12 @@
 {{!-- User Tempalte bro --}}
+Hi User
+{{#each errors as |error|}}
+	<p class="alert alert-warning">{{error}}</p>
+{{/each}}
+
+{{input value=password type="password" placeholder="New Password"}}
+{{input value=confirmPassword type="password" placeholder="Confirm Password"}}
+
+<button {{action "changePassword"}}>
+Change
+</button>

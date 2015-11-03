@@ -26,6 +26,13 @@ export default Ember.Service.extend({
 	// 	      });
 	// 	}
 	// },
+	currentEmail:function(){
+		return this.get('session.data.authenticated.email');
+	}.property('session','session.isAuthenticated'),
+
+	currentToken:function(){
+		return this.get('session.data.authenticated.token');
+	}.property('session','session.isAuthenticated'),
 
 	currentUser:function(){
 		console.log('----session-user service currentUser!');
