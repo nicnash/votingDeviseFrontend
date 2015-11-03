@@ -4,6 +4,7 @@ todo
 be able to edit your ideas
 password change
 update token on password change
+send current password too
 design / style
 limite to one vote per idea on backend
 limit to 3 ideas backend
