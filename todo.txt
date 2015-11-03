@@ -1,6 +1,9 @@
 todo
 
-
+add a name to user
+allow user to change password!
+http://tmi.twitch.tv/group/user/twitch/chatters
+design / style
 be able to edit your ideas
 password change
 update token on password change
