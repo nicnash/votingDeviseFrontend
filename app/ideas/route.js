@@ -20,21 +20,16 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
   startRefreshing: function(){
     console.log('startRefreshing');
     this.set('refreshing', true);
-    Em.run.later(this, this.refresh, 5000);
+    Em.run.later(this, this.refresh, 45000);
   },
   refresh: function(){
     console.log('refreshing boiii');
     if(!this.get('refreshing'))
       return;
-    // this.refresh();
     this.store.findAll('idea');
-    Em.run.later(this, this.refresh, 5000);
+    Em.run.later(this, this.refresh, 45000);
   },
   actions: {
-    // resetIdeas:function(){
-    //   console.log('resetIDEas inside the router');
-    //   this.refresh();
-    // },
     logout() {
       console.log('---route logout ideas');
 
