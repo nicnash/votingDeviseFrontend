@@ -4,6 +4,7 @@ const { service } = Ember.inject;
 
 export default Ember.Component.extend({
     session: service('session'),
+ 	sessionUser: service('session-user'),
 
     actions:{
         logout() {

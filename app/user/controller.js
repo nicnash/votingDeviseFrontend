@@ -2,10 +2,12 @@ import Ember from 'ember';
 const { service } = Ember.inject;
 
 export default Ember.Controller.extend({
+	session: service('session'),
 	sessionUser: service('session-user'),
 
 	password:'password',
 	confirmPassword:'password',
+	
 
 	actions:{
 		changePassword:function(){
@@ -31,23 +33,34 @@ export default Ember.Controller.extend({
 
 			if(errors.length === 0){
 				Ember.$.ajax( {
-	    		url: 'http://localhost:3000/editpass',
-	    		type: 'PATCH',
-	    		beforeSend: function (xhr){ 
-    		        xhr.setRequestHeader('Authorization', authStr); 
-    		    },
-	    		// data: { user:{email: "user4@example.com", password: "password", password_confirmation:"password" }},
-	    		data: { user:{password: password, password_confirmation: newPassword}},
+		    		url: 'http://localhost:3000/editpass',
+		    		type: 'PATCH',
+		    		beforeSend: function (xhr){ 
+	    		        xhr.setRequestHeader('Authorization', authStr); 
+	    		    },
+		    		// data: { user:{email: "user4@example.com", password: "password", password_confirmation:"password" }},
+		    		data: { user:{password: password, password_confirmation: newPassword}},
 		    	    success: function(response) {
-		    	      console.log('SUCCESS');
+		    	      console.log(response);
+
 		    	    },
 		    	    error: function(reason) {
-		    	      console.log('FAILSURE');
+		    	    	ctrl.get('session').invalidate();
+		    	      // console.log('FAILSURE');
+		    	      // var token = reason.responseText;
+		    	      // ctrl.set('session.data.authenticated.token',token);
+		    	      // var ca = document.cookie.split(';')
+		    	      // console.log(ca);
+		    	      // console.log('token',token);
+
+		    	      // console.log(reason);
 		    	    }
 	    		});
 			} else {
 				ctrl.set('errors',errors);
 			}
+
+
 		}
 	}
 });

@@ -14,11 +14,11 @@
       <ul class="nav navbar-nav">{{#link-to 'ideas' tagName="li"}}{{#link-to 'ideas' bubbles=false}}Ideas{{/link-to}}{{/link-to}}</ul>
       <ul class="nav navbar-nav">{{#link-to 'user' tagName="li"}}{{#link-to 'user' bubbles=false}}Change PW{{/link-to}}{{/link-to}}</ul>
       <ul class="nav navbar-nav navbar-right">
-        {{username}}
+        
         {{#unless session.isAuthenticated}}
           <li>{{nav-login}}</li>
         {{else}}
-          <li><a href="#" {{action 'logout'}}>Logout</a></li>
+          <li> <a href="#" {{action 'logout'}}>{{sessionUser.currentEmail}} Logout</a></li>
         {{/unless}}
       </ul>
     </div><!--/.nav-collapse -->
