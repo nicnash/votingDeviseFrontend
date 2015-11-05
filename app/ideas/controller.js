@@ -61,6 +61,10 @@ export default Ember.Controller.extend({
   	}.property('model.ideas.@each.count'),
 
 	actions:{
+		refreshIdeas:function(){
+			// this.reset();
+			this.send('resetIdeas');
+		},
 		vote:function(ideaId){
 			console.log('---------vote',ideaId);
 			var self = this;
