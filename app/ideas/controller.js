@@ -2,7 +2,7 @@ import Ember from 'ember';
 const { service } = Ember.inject;
 
 export default Ember.Controller.extend({
-    className:['ideas'],
+    classNames:['ideas'],
 	sessionUser: service('session-user'),
 	currentUser: Ember.computed.alias('model.currentUser'),
     ideaIdForVotes: function(){
@@ -21,6 +21,7 @@ export default Ember.Controller.extend({
     }.property('currentUser.votes.[]'),
     votedOnIdeas: Ember.computed.mapBy('currentUser.votes','idea'),
     ideasInCommon: Ember.computed.intersect('votedOnIdeas', 'model.ideas'),
+    isMaxIdeas: Ember.computed.gte('currentUser.ideasCount', 3),
   	sortedIdeas:function(){
 
   		var self = this;
