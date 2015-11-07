@@ -1,2 +1,18 @@
+<span class="count {{if isVotedOn 'isVotedOn'}}">{{idea.count}}</span>   
 
-<span class="count {{if isVotedOn 'isVotedOn'}}">{{idea.count}}</span>   <span class="border" {{action 'vote' idea.id}}>   {{idea.title}} - {{idea.description}}</span>{{#if isUsersIdea}}<span {{action 'deleteIdea' idea}} class="glyphicon glyphicon-remove text-danger"></span>{{/if}}
+<div class="content" {{action 'vote' idea.id}}>    
+    <p class="title">{{idea.title}}</p>
+    <p class="description">{{idea.description}}</p>
+</div>
+
+<span class="actions">
+    {{#if isUsersIdea}}
+        <span class="delete" {{action 'deleteIdea' idea}}>
+            <i class="glyphicon glyphicon-remove text-danger"></i>
+        </span>
+    {{else}}
+        <span class="delete">
+            &nbsp;
+        </span>
+    {{/if}}
+</span>

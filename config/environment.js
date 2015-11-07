@@ -19,7 +19,9 @@ module.exports = function(environment) {
     },
     
     contentSecurityPolicy: {
-      'connect-src': "*"
+      'connect-src': "*",
+      'font-src':'*',//googlefonts
+      'style-src':'*'
     },
 
     api: {
