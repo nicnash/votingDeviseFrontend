@@ -3,20 +3,29 @@ const { service } = Ember.inject;
 
 export default Ember.Controller.extend({
     classNames:['ideas'],
+    session: service('session'),
 	sessionUser: service('session-user'),
 	currentUser: Ember.computed.alias('model.currentUser'),
+	isAuthenticated: Ember.computed.alias('session.isAuthenticated'),
+	loginModalVisible:false,
     ideaIdForVotes: function(){
         console.log('---------ideaIdForVotes');
         var self = this;
-        var userVotes = self.get('currentUser.votes');
-        var array=[];
-        userVotes.forEach(function(vote, index, enumerable) {
-            var tempIdea = vote.get('idea.id');
-            array.push(tempIdea);
-        });
+        var isAuthenticated = self.get('isAuthenticated');
+        if(isAuthenticated){
+	        var userVotes = self.get('currentUser.votes');
+	        var array=[];
+	        userVotes.forEach(function(vote, index, enumerable) {
+	            var tempIdea = vote.get('idea.id');
+	            array.push(tempIdea);
+	        });
 
-        console.log(array);
-        return array;
+	        console.log(array);
+	        return array;
+    	} else {
+    		return null
+    	}
+
 
     }.property('currentUser.votes.[]'),
     votedOnIdeas: Ember.computed.mapBy('currentUser.votes','idea'),
@@ -30,36 +39,44 @@ export default Ember.Controller.extend({
   		var currentUserVotes = self.get('currentUser.votes');
   		var what = self.get('currentUser.votes.idea');
         var votedOnIdeas = self.get('votedOnIdeas');
+        var isAuthenticated = self.get('isAuthenticated');
         console.log('currentUser',currentUser);
         console.log('votedOnIdeas',votedOnIdeas);
         
         var model = self.get('model.ideas');
         console.log('model',model);
 
-        var ideasInCommon = self.get('ideasInCommon');
-        console.log('ideasInCommon',ideasInCommon);
 
+        if(isAuthenticated){
+	        var ideasInCommon = self.get('ideasInCommon');
+	        console.log('ideasInCommon',ideasInCommon);
 
-  		ideas.forEach(function(idea1) {
-			   	var ideaId1 = idea1.get('id');
-	   	  		currentUserVotes.forEach(function(vote) {
-   				    let ideaId2 = vote.get('idea.id');
-   				   	
-   				   	if(ideaId1 === ideaId2){
-   				   		console.log('yep!');
+	  		ideas.forEach(function(idea1) {
+				   	var ideaId1 = idea1.get('id');
+		   	  		currentUserVotes.forEach(function(vote) {
+	   				    let ideaId2 = vote.get('idea.id');
+	   				   	
+	   				   	if(ideaId1 === ideaId2){
+	   				   		console.log('yep!');
 
-   				   	}
-   				   	
+	   				   	}
+	   				});
 
-   				});
+				});
 
-			});
-
-  		return ideas.sortBy('count').reverse();
+	  		return ideas.sortBy('count').reverse();
+  		} else {
+  			return ideas.sortBy('count').reverse();
+  		}
 
   	}.property('model.ideas.@each.count'),
 
 	actions:{
+		presentLoginModal:function(){
+            console.log('ideas controller  You Must Authenticate first before you can vote');
+
+			this.set('loginModalVisible',true);
+		},
 		vote:function(ideaId){
 			console.log('---------vote',ideaId);
 			var self = this;

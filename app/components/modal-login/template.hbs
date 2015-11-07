@@ -1,0 +1,27 @@
+{{!-- <form {{action "authenticate" on="submit"}}>
+	<div>
+  		{{input class="email" value=identification placeholder="Email"}}
+	</div>
+	<div>
+		{{input class="password" value=password type="password" placeholder="Password"}}
+	</div>
+  <button type="submit">Login</button>
+</form> --}}
+{{#if visible}}
+<div class="modal-content {{if errorMessage 'taller'}}" >
+	<div class="modal-header">
+		<button type="button" class="close" {{action 'cancel'}}><i class="glyphicon glyphicon-remove text-danger"></i></button>
+		<h4 class="modal-title">Login</h4>
+	</div>
+	<div class="modal-body ">
+			{{input class="modal-input" value=identification placeholder="Email"}}
+			{{input class="modal-input" value=password type="password" placeholder="Password"}}
+
+			<p class="text-danger">{{errorMessage}}</p>
+	</div>
+	<div class="modal-footer">
+		<button type="button" class="btn btn-default" {{action 'cancel'}}>Close</button>
+		<button type="button" class="btn btn-primary" {{action 'login'}}>Log in</button>
+	</div>
+</div>
+{{/if}}

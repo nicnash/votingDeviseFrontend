@@ -25,15 +25,15 @@ module.exports = function(environment) {
     },
 
     api: {
-      // host: 'http://localhost:3000',
-      host: 'http://52.27.7.190:3000'
+      host: 'http://localhost:3000',
+      // host: 'http://52.27.7.190:3000'
     }
   };
 
   ENV['ember-simple-auth'] = {
     store: 'session-store:local-storage',
-    routeAfterAuthentication: 'dashboard',
-    routeIfAlreadyAuthenticated: 'dashboard'
+    // routeAfterAuthentication: 'dashboard',
+    // routeIfAlreadyAuthenticated: 'dashboard'
   }
 
   if (environment === 'development') {

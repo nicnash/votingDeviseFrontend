@@ -1,20 +1,20 @@
 import Ember from 'ember';
-import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-route-mixin';
 
 const { service } = Ember.inject;
 
-export default Ember.Route.extend(AuthenticatedRouteMixin, {
+export default Ember.Route.extend({
   session: service('session'),
   sessionUser: service('session-user'),
-
-
+  isAuthenticated: Ember.computed.alias('session.isAuthenticated'),
+  
   model:function() {
     var self = this;
-    // return this.store.findAll('idea');
+    var isAuthenticated = self.get('isAuthenticated')
+    console.log('isAuthenticated',isAuthenticated);
     return Ember.RSVP.hash({currentUser:self.get('sessionUser.currentUser'),ideas:this.store.findAll('idea')});
   },
   setupController: function(controller, model){
-    this._super(controller, model); // do the default implementation since I'm overriding this func
+    this._super(controller, model);
     this.startRefreshing();
   },
   startRefreshing: function(){

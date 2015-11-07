@@ -3,7 +3,7 @@
         <h2>Ideas</h2>
         <ul>
             {{#each sortedIdeas as |idea|}}
-                <li>{{idea-item idea=idea ideaIdForVotes=ideaIdForVotes vote='vote'}}</li>
+                <li>{{idea-item idea=idea ideaIdForVotes=ideaIdForVotes vote='vote' isAuthenticated=isAuthenticated presentLoginModal='presentLoginModal'}}</li>
             {{/each}}
         </ul>
     </div>
@@ -20,3 +20,5 @@
         {{/if}}
     </div>
 </div>
+
+{{modal-login visible=loginModalVisible }}
