@@ -1,6 +1,6 @@
 import Ember from 'ember';
+import config from '../config/environment';
 const { service } = Ember.inject;
-
 export default Ember.Controller.extend({
 	session: service('session'),
 	sessionUser: service('session-user'),
@@ -33,7 +33,7 @@ export default Ember.Controller.extend({
 
 			if(errors.length === 0){
 				Ember.$.ajax( {
-		    		url: 'http://localhost:3000/editpass',
+		    		url: config.api.host+'/editpass',
 		    		type: 'PATCH',
 		    		beforeSend: function (xhr){ 
 	    		        xhr.setRequestHeader('Authorization', authStr); 
@@ -45,7 +45,7 @@ export default Ember.Controller.extend({
 
 		    	    },
 		    	    error: function(reason) {
-		    	    	ctrl.get('session').invalidate();
+		    	    	// ctrl.get('session').invalidate();
 		    	      // console.log('FAILSURE');
 		    	      // var token = reason.responseText;
 		    	      // ctrl.set('session.data.authenticated.token',token);
