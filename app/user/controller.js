@@ -24,7 +24,7 @@ export default Ember.Controller.extend({
 			if(password.length<8){
 				errors.push('Passwords must be at least 8 characters long');
 			}
-			if(password != confirmPassword)
+			if(password !== confirmPassword)
 			{
 				errors.push('Yo passwords dont match bro');
 			}
@@ -42,10 +42,12 @@ export default Ember.Controller.extend({
 		    		data: { user:{password: password, password_confirmation: newPassword}},
 		    	    success: function(response) {
 		    	      console.log(response);
+		    	    	ctrl.get('session').invalidate();
 
 		    	    },
 		    	    error: function(reason) {
-		    	    	// ctrl.get('session').invalidate();
+		    	    	console.log(reason);
+		    	    	ctrl.get('session').invalidate();
 		    	      // console.log('FAILSURE');
 		    	      // var token = reason.responseText;
 		    	      // ctrl.set('session.data.authenticated.token',token);

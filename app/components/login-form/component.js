@@ -4,7 +4,6 @@ const { service } = Ember.inject;
 
 export default Ember.Component.extend({
   session: service('session'),
-  newEmail:"user@example.com",
   actions: {
     authenticate: function() {
       let { identification, password } = this.getProperties('identification', 'password');

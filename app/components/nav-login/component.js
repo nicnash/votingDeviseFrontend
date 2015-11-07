@@ -4,8 +4,8 @@ const { service } = Ember.inject;
 
 export default Ember.Component.extend({
   session: service('session'),
-  identification:'user@example.com',
-  password:'password',
+  identification:'',
+  password:'',
 
   actions: {
     authenticate: function() {
