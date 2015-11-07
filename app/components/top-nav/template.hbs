@@ -12,13 +12,19 @@
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">{{#link-to 'ideas' tagName="li"}}{{#link-to 'ideas' bubbles=false}}Ideas{{/link-to}}{{/link-to}}</ul>
-      <ul class="nav navbar-nav">{{#link-to 'user' tagName="li"}}{{#link-to 'user' bubbles=false}}Change PW{{/link-to}}{{/link-to}}</ul>
+      <ul class="nav navbar-nav">{{#link-to 'ideas' tagName="li"}}{{#link-to 'ideas' bubbles=false}}Tutorials{{/link-to}}{{/link-to}}</ul>
+      <ul class="nav navbar-nav">{{#link-to 'ideas' tagName="li"}}{{#link-to 'ideas' bubbles=false}}Videos{{/link-to}}{{/link-to}}</ul>
       <ul class="nav navbar-nav navbar-right">
         
         {{#unless session.isAuthenticated}}
           <li>{{nav-login}}</li>
         {{else}}
-          <li> <a href="#" {{action 'logout'}}>{{sessionUser.currentEmail}} Logout</a></li>
+          <li>
+            {{#link-to 'user'}}{{sessionUser.currentEmail}}{{/link-to}}
+          </li>
+          <li> 
+            <a href="#" {{action 'logout'}}> Logout</a>
+          </li>
         {{/unless}}
       </ul>
     </div><!--/.nav-collapse -->
