@@ -3,6 +3,7 @@ todo
 add a name to user
 allow user to change password!
 http://tmi.twitch.tv/group/user/twitch/chatters
+reset token on login / reset pw
 design / style
 be able to edit your ideas
 password change
