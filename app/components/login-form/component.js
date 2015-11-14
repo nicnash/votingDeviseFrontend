@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import config from '../../config/environment';
 
 const { service } = Ember.inject;
 
@@ -14,18 +15,27 @@ export default Ember.Component.extend({
     createUser: function() { 
     	console.log('-----createUser');
     	let newEmail = this.get('newEmail');
-    	Ember.$.ajax( {
-    		url: '/users',
-    		type: 'POST',
-    		// data: { user:{email: "user4@example.com", password: "password", password_confirmation:"password" }},
-    		data: { user:{email: newEmail, password: "password"}},
-    	    success: function(response) {
-    	      console.log('SUCCESS');
-    	    },
-    	    error: function(reason) {
-    	      console.log('FAILSURE');
-    	    }
-    	});
+        let newPassword = this.get('newPassword');
+        let newPasswordConfirm = this.get('newPasswordConfirm');
+
+        if(newPassword !== newPasswordConfirm){
+            this.set('errorMessage', 'Passwords must be the same');
+        }else if(newEmail.length<5){
+            this.set('errorMessage', 'Email too short dawg.');
+        }else{
+        	Ember.$.ajax( {
+        		url: config.api.host+'/users',
+        		type: 'POST',
+        		// data: { user:{email: "user4@example.com", password: "password", password_confirmation:"password" }},
+        		data: { user:{email: newEmail, password: newPassword}},
+        	    success: function(response) {
+        	      console.log('SUCCESS');
+        	    },
+        	    error: function(reason) {
+        	      console.log('FAILSURE');
+        	    }
+        	});
+        }
 
 
     }
