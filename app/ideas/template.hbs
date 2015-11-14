@@ -1,9 +1,10 @@
 <div class="row ideas">
     <div class="col-xs-12 col-sm-9">
         <h2>Ideas</h2>
+        <h2>Is confirmed :{{currentUser.isConfirmed}}</h2>
         <ul>
             {{#each sortedIdeas as |idea|}}
-                <li>{{idea-item idea=idea ideaIdForVotes=ideaIdForVotes vote='vote' isAuthenticated=isAuthenticated presentLoginModal='presentLoginModal'}}</li>
+                <li>{{idea-item idea=idea ideaIdForVotes=ideaIdForVotes vote='vote' isAuthenticated=isAuthenticated isConfirmed=currentUser.isConfirmed presentLoginModal='presentLoginModal' presentConfirmationModal='presentConfirmationModal'}}</li>
             {{/each}}
         </ul>
     </div>
@@ -22,3 +23,4 @@
 </div>
 
 {{modal-login visible=loginModalVisible }}
+{{modal-confirmationrequest visible=isConfirmationModalVisible }}

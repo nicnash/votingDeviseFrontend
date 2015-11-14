@@ -5,6 +5,7 @@ view ideas without logging in
 http://tmi.twitch.tv/group/user/twitch/chatters
 request account
 add youtube videos
+tutorials
 create account, but cant vote until i approve
 be able to edit your ideas
 limite to one vote per idea on backend

@@ -8,6 +8,7 @@ export default Ember.Controller.extend({
 	currentUser: Ember.computed.alias('model.currentUser'),
 	isAuthenticated: Ember.computed.alias('session.isAuthenticated'),
 	loginModalVisible:false,
+	isConfirmationModalVisible:false,
     ideaIdForVotes: function(){
         console.log('---------ideaIdForVotes');
         var self = this;
@@ -76,6 +77,11 @@ export default Ember.Controller.extend({
             console.log('ideas controller  You Must Authenticate first before you can vote');
 
 			this.set('loginModalVisible',true);
+		},
+		presentConfirmationModal:function(){
+			console.log('ideas controller  present confirmationmodal');
+			this.set('isConfirmationModalVisible',true);
+
 		},
 		vote:function(ideaId){
 			console.log('---------vote',ideaId);

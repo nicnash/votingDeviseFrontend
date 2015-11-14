@@ -1,0 +1,14 @@
+{{#if visible}}
+<div class="modal-content {{if errorMessage 'taller'}}" >
+	<div class="modal-header">
+		<button type="button" class="close" {{action 'cancel'}}><i class="glyphicon glyphicon-remove text-danger"></i></button>
+		<h4 class="modal-title">Confirmation Request</h4>
+	</div>
+	<div class="modal-body ">
+			<h2>Your account must be confirmed before you can post</h2>
+	</div>
+	<div class="modal-footer">
+		<button class="btn btn-primary" {{action 'requestConfirmation'}}>Request Confirmation</button>
+	</div>
+</div>
+{{/if}}

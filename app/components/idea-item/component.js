@@ -33,10 +33,16 @@ currentUser: Ember.computed.alias('sessionUser.currentUser'),
         vote:function(ideaId){
             var self = this;
             var isAuthenticated = self.get('isAuthenticated');
+            var isConfirmed = self.get('isConfirmed');
+
             if(isAuthenticated){
-                self.sendAction('vote',ideaId);
+                if(isConfirmed){
+                    self.sendAction('vote',ideaId);
+                } else {
+                    self.sendAction('presentConfirmationModal');
+                }
+
             } else {
-                console.log('ideaItem component.  You Must Authenticate first before you can vote');
                 self.sendAction('presentLoginModal');
             }
         },

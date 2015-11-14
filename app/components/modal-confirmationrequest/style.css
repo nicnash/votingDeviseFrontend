@@ -1,0 +1,31 @@
+& {
+	/* Positioning */
+	position: fixed;
+	transform:translate(200px, -50%);
+	z-index: 100;
+
+	/* Box-model */
+
+	/* Typography */
+
+	/* Visual */
+
+    /* Misc */
+}
+
+.modal-input {
+	width: 80%;
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+
+.modal-content {
+	height:300px;
+	width:500px;
+}
+
+.modal-body {
+	padding:20px 15px;
+	text-align: center;
+}
+
