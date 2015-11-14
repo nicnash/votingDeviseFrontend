@@ -1,25 +1,24 @@
 <div class="row ideas">
-    <div class="col-xs-12 col-sm-9">
+    <div class="col-xs-12 col-sm-9 {{unless isAuthenticated 'col-sm-12'}}">
         <h2>Ideas</h2>
-        <h2>Is confirmed :{{currentUser.isConfirmed}}</h2>
         <ul>
             {{#each sortedIdeas as |idea|}}
                 <li>{{idea-item idea=idea ideaIdForVotes=ideaIdForVotes vote='vote' isAuthenticated=isAuthenticated isConfirmed=currentUser.isConfirmed presentLoginModal='presentLoginModal' presentConfirmationModal='presentConfirmationModal'}}</li>
             {{/each}}
         </ul>
     </div>
-
+    {{#if isAuthenticated}}
     <div class="col-xs-12 col-sm-3 newIdea">
-        <h3>Contribute an idea</h3>{{currentUser.ideasCount}}/3
-        {{#if isMaxIdeas}}
-            Maxxed out Bro
-            
-        {{else}}
-            {{input     class="title"       value=ideaTitle       placeholder='Title'}}
-            {{textarea  class="description" value=ideaDescription placeholder='Description'}}
-            <button class="btn btn-default btn-block" {{action 'createIdea'}}>Add</button>
-        {{/if}}
+            <h3>Contribute an idea</h3>{{currentUser.ideasCount}}/3
+            {{#if isMaxIdeas}}
+                Maxxed out Bro
+            {{else}}
+                {{input     class="title"       value=ideaTitle       placeholder='Title'}}
+                {{textarea  class="description" value=ideaDescription placeholder='Description'}}
+                <button class="btn btn-default btn-block" {{action 'createIdea'}}>Add</button>
+            {{/if}}
     </div>
+    {{/if}}
 </div>
 
 {{modal-login visible=loginModalVisible }}

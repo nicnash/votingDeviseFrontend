@@ -2,7 +2,7 @@ import Ember from 'ember';
 const { service } = Ember.inject;
 export default Ember.Component.extend({
   	session: service('session'),
-
+  	notify: service('notify'),
 	visible:false,
 
 	actions:{
@@ -11,6 +11,9 @@ export default Ember.Component.extend({
 		},
 		requestConfirmation: function(){
 			console.log('requestConfirmation');
+			this.get('notify').info('Request Sent!');
+			// this.set('visible',false);
+			
 		}
 	}
 });
